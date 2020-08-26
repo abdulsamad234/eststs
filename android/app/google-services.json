@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "835107260534",
+    "firebase_url": "https://estats-7f8d6.firebaseio.com",
+    "project_id": "estats-7f8d6",
+    "storage_bucket": "estats-7f8d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835107260534:android:3f2b602b84d37c9565b757",
+        "android_client_info": {
+          "package_name": "com.abovav.estats"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835107260534-cmtlirij4tpd7erp1g9ojgvp9bio5u3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrAq4sppJ1RqJsbgwDPtoBYw7pReGjLiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835107260534-cmtlirij4tpd7erp1g9ojgvp9bio5u3p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "835107260534-m5ehkimnrore6h40co8nbrpai0m2kqvr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.abovav.estats"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
