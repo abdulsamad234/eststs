@@ -17,6 +17,7 @@ import 'package:estats/pages/fan/fan_home.dart';
 import 'package:estats/pages/fan/fan_stats_history_page.dart';
 import 'package:estats/pages/fan/fan_stats_history_search.dart';
 import 'package:estats/pages/fan/stats_page_live.dart';
+import 'package:estats/pages/login.dart';
 import 'package:estats/services/PaypalPayment.dart';
 import 'package:estats/services/dataservice.dart';
 import 'package:estats/styleguide/colors.dart';
@@ -43,7 +44,7 @@ class _FanPaymentPageState extends State<FanPaymentPage> {
       List<DropdownMenuItem<dynamic>>();
   String currentSelectedSchool = '';
   List<String> schoolItemsString = List<String>();
-  List<String> _kProductIds = <String>['fan_membership'];
+  List<String> _kProductIds = <String>['fan_subscription'];
 
   final InAppPurchaseConnection _connection = InAppPurchaseConnection.instance;
   StreamSubscription<List<PurchaseDetails>> _subscription;
@@ -71,6 +72,15 @@ class _FanPaymentPageState extends State<FanPaymentPage> {
     });
     initStoreInfo();
   }
+
+  logout() {
+    FirebaseAuth.instance.signOut();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+        (Route<dynamic> route) => false);
+  }
+
 
   Future<void> initStoreInfo() async {
     final bool isAvailable = await _connection.isAvailable();
@@ -153,7 +163,7 @@ class _FanPaymentPageState extends State<FanPaymentPage> {
 
   void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) {
     purchaseDetailsList.forEach((PurchaseDetails purchaseDetails) async {
-      if (purchaseDetails.productID == 'fan_membership') {
+      if (purchaseDetails.productID == 'fan_subscription') {
         print('Fan sub');
         if (purchaseDetails.status == PurchaseStatus.pending) {
           // showPendingUI();
@@ -234,11 +244,11 @@ class _FanPaymentPageState extends State<FanPaymentPage> {
                         productDetails: _products[0],
                         applicationUserName: null,
                         sandboxTesting: false);
-                    if (_products[0].id == 'fan_membership') {
+                    if (_products[0].id == 'fan_subscription') {
                       // setState(() {
                       //   _purchasePending = true;
                       // });
-                      bool bought = await _connection.buyConsumable(
+                      bool bought = await _connection.buyNonConsumable(
                           purchaseParam: purchaseParam);
                       print('Bought: $bought');
                       // setState(() {
@@ -248,9 +258,25 @@ class _FanPaymentPageState extends State<FanPaymentPage> {
                     }
                   },
                   child: Text(
-                    'Pay with Apple Pay',
+                    'Subscribe',
                     style: TextStyle(
                         color: mainBGColor,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18),
+                  ),
+                ),
+                 SizedBox(
+                  height: 20,
+                ),
+                PrimaryButton(
+                  onPressed: (context) {
+                    logout();
+                  },
+                  bgColor: Color(0xFFF4072D),
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(
+                        color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontSize: 18),
                   ),

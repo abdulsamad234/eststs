@@ -124,12 +124,12 @@ class AfterSplash extends StatelessWidget {
                               if (currentUserData.data.data['paid']) {
                                 return CoachHomePage();
                               } else {
-                                // return PaymentPage();
-                                return CoachHomePage();
+                                return PaymentPage();
+                                // return CoachHomePage();
                               }
                             } else {
-                              // return PaymentPage();
-                              return CoachHomePage();
+                              return PaymentPage();
+                              // return CoachHomePage();
                             }
 
                           });
@@ -141,13 +141,13 @@ class AfterSplash extends StatelessWidget {
                     return FanHomePage();
                   } else {
                     print('Going to fan payment page');
-                    // return FanPaymentPage();
-                    return FanHomePage();
+                    return FanPaymentPage();
+                    // return FanHomePage();
                   }
                 } else {
                   print('Going to fan payment page');
-                  // return FanPaymentPage();
-                  return FanHomePage();
+                  return FanPaymentPage();
+                  // return FanHomePage();
                 }
               }
             },
